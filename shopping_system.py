@@ -52,6 +52,9 @@ class Customer:
             return f"{quantity} items of {product.product_name} has been removed."
 
     def show_cart(self):
+        if not self.cart:
+            return "Your cart is empty."
+        
         for product in self.cart:
             print(f"{product.product_name}, {self.cart[product]} items, price per item: {product.price}$")
 
@@ -61,7 +64,7 @@ class Customer:
             if self.cart[product] == 0:
                 continue
             bill += product.price * self.cart[product]
-
+        self.cart.clear()
         return f"You need to pay: {bill}$"
 
 
