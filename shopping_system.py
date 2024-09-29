@@ -21,6 +21,8 @@ class Customer:
         self.cart = {}
 
     def add_to_cart(self, product, quantity):
+        if quantity <= 0:
+            return f"You must add to cart number of items greater than 0."
         if not product.is_available:
             return "Sorry, this item isn't available right now."
 
